@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3019227314974836442
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1775872649770408928, guid: 92e26ef1e0592d949963bd8e1d404dee, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 1775872649770408928, guid: 92e26ef1e0592d949963bd8e1d404dee, type: 3}
+      propertyPath: m_Color.g
+      value: 0.4509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 1775872649770408928, guid: 92e26ef1e0592d949963bd8e1d404dee, type: 3}
+      propertyPath: m_Color.r
+      value: 0.49411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358707533423916242, guid: 92e26ef1e0592d949963bd8e1d404dee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358707533423916242, guid: 92e26ef1e0592d949963bd8e1d404dee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358707533423916242, guid: 92e26ef1e0592d949963bd8e1d404dee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358707533423916242, guid: 92e26ef1e0592d949963bd8e1d404dee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358707533423916242, guid: 92e26ef1e0592d949963bd8e1d404dee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358707533423916242, guid: 92e26ef1e0592d949963bd8e1d404dee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358707533423916242, guid: 92e26ef1e0592d949963bd8e1d404dee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358707533423916242, guid: 92e26ef1e0592d949963bd8e1d404dee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358707533423916242, guid: 92e26ef1e0592d949963bd8e1d404dee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358707533423916242, guid: 92e26ef1e0592d949963bd8e1d404dee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253810038874670429, guid: 92e26ef1e0592d949963bd8e1d404dee, type: 3}
+      propertyPath: m_Name
+      value: MountainTile
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6253810038874670429, guid: 92e26ef1e0592d949963bd8e1d404dee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3931714493817976878}
+  m_SourcePrefab: {fileID: 100100000, guid: 92e26ef1e0592d949963bd8e1d404dee, type: 3}
+--- !u!212 &3549779865917906234 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1775872649770408928, guid: 92e26ef1e0592d949963bd8e1d404dee, type: 3}
+  m_PrefabInstance: {fileID: 3019227314974836442}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9164697868921914247 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6253810038874670429, guid: 92e26ef1e0592d949963bd8e1d404dee, type: 3}
+  m_PrefabInstance: {fileID: 3019227314974836442}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3931714493817976878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9164697868921914247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c92b2c1e9a4a654289d7ad1dd2c7569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MountainTile
+  _renderer: {fileID: 3549779865917906234}

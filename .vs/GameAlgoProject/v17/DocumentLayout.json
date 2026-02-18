@@ -3,12 +3,32 @@
   "WorkspaceRootPath": "E:\\GitHub Cloned Repo\\GameAlgoProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|e:\\github cloned repo\\gamealgoproject\\assets\\scripts\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|E:\\GitHub Cloned Repo\\GameAlgoProject\\assets\\scripts\\managers\\gridmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\gridmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|e:\\github cloned repo\\gamealgoproject\\assets\\scripts\\gridmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gridmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|e:\\github cloned repo\\gamealgoproject\\assets\\scripts\\unit\\playerunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unit\\playerunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|E:\\GitHub Cloned Repo\\GameAlgoProject\\assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|E:\\GitHub Cloned Repo\\GameAlgoProject\\assets\\scripts\\managers\\turnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\turnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|E:\\GitHub Cloned Repo\\GameAlgoProject\\assets\\scripts\\tiles\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tiles\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|E:\\GitHub Cloned Repo\\GameAlgoProject\\assets\\scripts\\tiles\\mountaintile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tiles\\mountaintile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|E:\\GitHub Cloned Repo\\GameAlgoProject\\assets\\scripts\\tiles\\grasstile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tiles\\grasstile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,33 +38,95 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GridManager.cs",
-              "DocumentMoniker": "E:\\GitHub Cloned Repo\\GameAlgoProject\\Assets\\Scripts\\GridManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\GridManager.cs",
-              "ToolTip": "E:\\GitHub Cloned Repo\\GameAlgoProject\\Assets\\Scripts\\GridManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\GridManager.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAowBUAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "E:\\GitHub Cloned Repo\\GameAlgoProject\\Assets\\Scripts\\Managers\\GameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\GameManager.cs",
+              "ToolTip": "E:\\GitHub Cloned Repo\\GameAlgoProject\\Assets\\Scripts\\Managers\\GameManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Managers\\GameManager.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAwwBEAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-18T10:44:00.648Z",
+              "WhenOpened": "2026-02-18T18:13:11.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PlayerUnit.cs",
+              "DocumentMoniker": "E:\\GitHub Cloned Repo\\GameAlgoProject\\Assets\\Scripts\\Unit\\PlayerUnit.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Unit\\PlayerUnit.cs",
+              "ToolTip": "E:\\GitHub Cloned Repo\\GameAlgoProject\\Assets\\Scripts\\Unit\\PlayerUnit.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Unit\\PlayerUnit.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowCcAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T18:06:15.833Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TurnManager.cs",
+              "DocumentMoniker": "E:\\GitHub Cloned Repo\\GameAlgoProject\\Assets\\Scripts\\Managers\\TurnManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\TurnManager.cs",
+              "ToolTip": "E:\\GitHub Cloned Repo\\GameAlgoProject\\Assets\\Scripts\\Managers\\TurnManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Managers\\TurnManager.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAAwFcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T17:52:49.1Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Tile.cs",
-              "DocumentMoniker": "E:\\GitHub Cloned Repo\\GameAlgoProject\\Assets\\Scripts\\Tile.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Tile.cs",
-              "ToolTip": "E:\\GitHub Cloned Repo\\GameAlgoProject\\Assets\\Scripts\\Tile.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Tile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA2AAAAAAAAAA==",
+              "Title": "GridManager.cs",
+              "DocumentMoniker": "E:\\GitHub Cloned Repo\\GameAlgoProject\\Assets\\Scripts\\Managers\\GridManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\GridManager.cs",
+              "ToolTip": "E:\\GitHub Cloned Repo\\GameAlgoProject\\Assets\\Scripts\\Managers\\GridManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Managers\\GridManager.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAowC0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-18T10:41:26.464Z",
+              "WhenOpened": "2026-02-18T17:37:44.593Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Tile.cs",
+              "DocumentMoniker": "E:\\GitHub Cloned Repo\\GameAlgoProject\\Assets\\Scripts\\Tiles\\Tile.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Tiles\\Tile.cs",
+              "ToolTip": "E:\\GitHub Cloned Repo\\GameAlgoProject\\Assets\\Scripts\\Tiles\\Tile.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Tiles\\Tile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T17:12:28.604Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GrassTile.cs",
+              "DocumentMoniker": "E:\\GitHub Cloned Repo\\GameAlgoProject\\Assets\\Scripts\\Tiles\\GrassTile.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Tiles\\GrassTile.cs",
+              "ToolTip": "E:\\GitHub Cloned Repo\\GameAlgoProject\\Assets\\Scripts\\Tiles\\GrassTile.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Tiles\\GrassTile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T17:05:11.534Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MountainTile.cs",
+              "DocumentMoniker": "E:\\GitHub Cloned Repo\\GameAlgoProject\\Assets\\Scripts\\Tiles\\MountainTile.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Tiles\\MountainTile.cs",
+              "ToolTip": "E:\\GitHub Cloned Repo\\GameAlgoProject\\Assets\\Scripts\\Tiles\\MountainTile.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Tiles\\MountainTile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T17:05:02.654Z"
             }
           ]
         }
