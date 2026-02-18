@@ -13,6 +13,9 @@ public class GridManager : MonoBehaviour
 
     private Dictionary<Vector2, Tile> _tiles;
 
+    public int Width => _width;
+    public int Height => _height;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -56,6 +59,7 @@ public class GridManager : MonoBehaviour
         if (_tiles.TryGetValue(pos, out var tile)) return tile;
         return null;
     }
+
 
     public Tile GetRandomWalkableTile()
     {

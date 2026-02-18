@@ -1,11 +1,15 @@
 using UnityEngine;
 
-
-// Use WASD to move
-// Press space to end turn
+/*
+Player-controlled unit.
+WASD to move up to 3 tiles per turn
+Walking into an enemy tile attacks that enemy (bump-to-attack)
+Space to end turn early
+*/
 public class PlayerUnit : Unit
 {
     private bool _isTurn = false;
+    private int _movesRemaining = 0;
 
     protected override void Awake()
     {
@@ -23,17 +27,18 @@ public class PlayerUnit : Unit
     public override void TakeTurn()
     {
         _isTurn = true;
-        Debug.Log("Player's turn, use WASD to move, Space to end turn.");
-    }
-
-    public void EndTurn()
-    {
-        _isTurn = false;
-        TurnManager.Instance.NextTurn();
+        _movesRemaining = MoveRange; 
+        Debug.Log($"Player's turn — {_movesRemaining} moves remaining. WASD to move/attack, Space to end turn.");
     }
 
     private void HandleMovementInput()
     {
+        if (_movesRemaining <= 0)
+        {
+            Debug.Log("No moves remaining — press Space to end turn.");
+            return;
+        }
+
         Vector2 direction = Vector2.zero;
 
         if (Input.GetKeyDown(KeyCode.W)) direction = Vector2.up;
@@ -57,23 +62,46 @@ public class PlayerUnit : Unit
             return;
         }
 
+    
         if (targetTile.OccupiedUnit != null)
         {
-            Debug.Log("Can't move there — tile is occupied.");
+            Unit target = targetTile.OccupiedUnit;
+
+            if (TryAttack(target))
+            {
+                Debug.Log($"Player attacked {target.name} for {AttackDamage} damage! {target.name} HP: {target.CurrentHealth}/{target.MaxHealth}");
+                _movesRemaining--;  // Attacking costs a move
+            }
             return;
         }
 
+ 
         MoveToTile(targetTile);
-        Debug.Log($"Player moved to {targetPos}");
+        _movesRemaining--;
+        Debug.Log($"Player moved to {targetPos}. Moves remaining: {_movesRemaining}");
+
+ 
+        if (_movesRemaining <= 0)
+        {
+            Debug.Log("No moves remaining — ending turn automatically.");
+            EndTurn();
+        }
     }
 
     private void HandleEndTurnInput()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Player ended their turn.");
+            Debug.Log("Player ended their turn early.");
             EndTurn();
         }
+    }
+
+    private void EndTurn()
+    {
+        _isTurn = false;
+        _movesRemaining = 0;
+        TurnManager.Instance.NextTurn();
     }
 
     protected override void OnDamageTaken(int damage)
@@ -84,7 +112,7 @@ public class PlayerUnit : Unit
     protected override void OnDeath()
     {
         base.OnDeath();
-        Debug.Log("Player has died. Game Over!");
-        // TODO: Trigger game over screen via GameManager
+        Debug.Log("Player has been defeated — Game Over!");
+        // TODO: Hook into UI manager to show game over screen
     }
 }
