@@ -104,6 +104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3987fc849ae3f546acc1b69e08b626a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerUnit
-  _maxHealth: 30
+  _maxHealth: 60
   _attackDamage: 10
   _moveRange: 3
+  _healthbarName: PlayerHealthBar
+  _flashColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _flashDuration: 0.3
+  _flashCount: 24

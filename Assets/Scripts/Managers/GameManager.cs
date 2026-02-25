@@ -6,10 +6,14 @@ public class GameManager : MonoBehaviour
     [Header("Unit Prefabs")]
     [SerializeField] private PlayerUnit _playerPrefab;
     [SerializeField] private ChaserNPC _chaserPrefab;
+    [SerializeField] private RangedNPC _rangedPrefab;
+    [SerializeField] private HealerNPC _healerPrefab;
 
     [Header("Spawn Counts")]
-    [SerializeField][Range(1, 8)] private int _chaserCount = 2;
-    [SerializeField][Range(1, 8)] private int _patrolCount = 2; // Ready for Patrol NPC
+    [SerializeField][Range(0, 8)] private int _chaserCount = 1;
+    [SerializeField][Range(0, 8)] private int _patrolCount = 1; // Ready for Patrol NPC
+    [SerializeField][Range(0, 8)] private int _rangedCount = 1;
+    [SerializeField][Range(0, 8)] private int _healerCount = 1;
 
     public PlayerUnit Player { get; private set; }
 
@@ -25,8 +29,10 @@ public class GameManager : MonoBehaviour
     {
         SpawnPlayer();
         SpawnNPCs(_chaserPrefab, _chaserCount, GetTopRightTiles(), "Chaser");
+        SpawnNPCs(_rangedPrefab, _rangedCount, GetTopLeftTiles(), "Ranged");
+        SpawnNPCs(_healerPrefab, _healerCount, GetCenterTiles(), "Healer");
 
-       
+
 
         TurnManager.Instance.StartGame();
     }
@@ -90,6 +96,18 @@ public class GameManager : MonoBehaviour
         };
     }
 
+    private Vector2[] GetBottomRightTiles()
+    {
+        int w = GridManager.Instance.Width - 1;
+
+        return new Vector2[]
+        {
+            new Vector2(w,     0), new Vector2(w,     1), new Vector2(w,     2),
+            new Vector2(w - 1, 0), new Vector2(w - 1, 1), new Vector2(w - 1, 2),
+            new Vector2(w - 2, 0), new Vector2(w - 2, 1), new Vector2(w - 2, 2)
+        };
+    }
+
     private Vector2[] GetTopRightTiles()
     {
         int w = GridManager.Instance.Width - 1;
@@ -115,6 +133,22 @@ public class GameManager : MonoBehaviour
         };
     }
 
+    private Vector2[] GetCenterTiles()
+    {
+        int w = GridManager.Instance.Width - 1;
+        int h = GridManager.Instance.Height - 1;
+        int midW = w / 2;
+        int midH = h / 2;
+
+        return new Vector2[]
+        {
+            new Vector2(midW,     midH),     new Vector2(midW + 1, midH),     new Vector2(midW - 1, midH),
+            new Vector2(midW,     midH + 1), new Vector2(midW + 1, midH + 1), new Vector2(midW - 1, midH + 1),
+            new Vector2(midW,     midH - 1), new Vector2(midW + 1, midH - 1), new Vector2(midW - 1, midH - 1),
+            new Vector2(midW + 2, midH),     new Vector2(midW - 2, midH),     new Vector2(midW,     midH + 2),
+            new Vector2(midW,     midH - 2)
+        };
+    }
 
     private Tile GetFirstAvailableTile(Vector2[] positions)
     {

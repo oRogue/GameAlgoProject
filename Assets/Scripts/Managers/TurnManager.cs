@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,10 @@ public class TurnManager : MonoBehaviour
     private List<Unit> _turnOrder = new List<Unit>();
 
     private int _currentTurnIndex = 0;
+
+    private bool _isWaiting = false;
+
+    [SerializeField] private float _turnDelay = 0.5f;
 
     public bool GameActive { get; private set; } = false;
 
@@ -45,13 +50,25 @@ public class TurnManager : MonoBehaviour
         StartCurrentTurn();
     }
 
-
     public void NextTurn()
     {
-        if (!GameActive) return;
+        if (!GameActive || _isWaiting) return;
+
+        StartCoroutine(DelayedNextTurn());
+    }
+
+    public IEnumerator DelayedNextTurn()
+    {
+        _isWaiting = true;
+
+        yield return new WaitForSeconds(_turnDelay);
 
         // Check win/lose before advancing
-        if (CheckGameOver()) return;
+        if (CheckGameOver())
+        {
+            _isWaiting = false;
+            yield break;
+        }
 
         // Advance to next alive unit, skipping dead ones
         int attempts = 0;
@@ -64,11 +81,13 @@ public class TurnManager : MonoBehaviour
             if (attempts > _turnOrder.Count)
             {
                 Debug.LogError("TurnManager: No alive units found!");
-                return;
+                _isWaiting = false;
+                yield break;
             }
 
         } while (!_turnOrder[_currentTurnIndex].IsAlive);
 
+        _isWaiting = false;
         StartCurrentTurn();
     }
 

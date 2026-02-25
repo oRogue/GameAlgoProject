@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Unit : MonoBehaviour
 {
@@ -6,6 +7,9 @@ public abstract class Unit : MonoBehaviour
     [SerializeField] private int _maxHealth = 30;
     [SerializeField] private int _attackDamage = 10;
     [SerializeField] private int _moveRange = 3;     // Max tiles to move per turn
+
+    [SerializeField] private string _healthbarName;
+    private Slider _healthbar;
 
     public int MaxHealth => _maxHealth;
     public int CurrentHealth { get; private set; }
@@ -18,6 +22,28 @@ public abstract class Unit : MonoBehaviour
     protected virtual void Awake()
     {
         CurrentHealth = _maxHealth;
+
+        FindHealthBar();
+    }
+
+    private void FindHealthBar()
+    {
+        GameObject healthbarObj = GameObject.Find(_healthbarName);
+
+        if (healthbarObj != null)
+        {
+            _healthbar = healthbarObj.GetComponent<Slider>();
+            if (_healthbar != null)
+            {
+                _healthbar.maxValue = 1f;
+                _healthbar.value = 1f;
+                Debug.Log($"Unit {name} found health bar: {healthbarObj.name}");
+            }
+        }
+        else
+        {
+            Debug.LogError($"Unit {name} could not find any health bar in scene!");
+        }
     }
 
     public void InitOnTile(Tile tile)
@@ -50,6 +76,8 @@ public abstract class Unit : MonoBehaviour
         CurrentHealth -= damage;
         CurrentHealth = Mathf.Max(CurrentHealth, 0);
 
+        _healthbar.value = (float)CurrentHealth / MaxHealth;
+
         OnDamageTaken(damage);
 
         if (!IsAlive)
@@ -78,4 +106,12 @@ public abstract class Unit : MonoBehaviour
     }
 
     public abstract void TakeTurn();
+
+    public void Heal(int amount)
+    {
+        CurrentHealth += amount;
+        CurrentHealth = Mathf.Min(CurrentHealth, MaxHealth);
+        _healthbar.value = (float)CurrentHealth / MaxHealth;
+        Debug.Log($"{name} was healed for {amount}. HP: {CurrentHealth}/{MaxHealth}");
+    }
 }
