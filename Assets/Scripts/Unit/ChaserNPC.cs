@@ -68,5 +68,6 @@ public class ChaserNPC : Unit
     {
         base.OnDeath();
         Debug.Log($"{name} has been defeated!");
+        GameManager.Instance.feedText.text = "Chaser was defeated!";
     }
 }

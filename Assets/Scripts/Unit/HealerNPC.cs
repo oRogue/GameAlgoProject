@@ -74,6 +74,7 @@ public class HealerNPC : Unit
         if (TryAttack(player))
         {
             Debug.Log($"{name}: Attacked player for {AttackDamage} damage! Player HP: {player.CurrentHealth}/{player.MaxHealth}");
+            GameManager.Instance.feedText.text = "Healer attacked!";
             return;
         }
 
@@ -145,6 +146,7 @@ public class HealerNPC : Unit
         ally.Heal(healedAmount);
 
         Debug.Log($"{name}: Healed {ally.name} for {healedAmount} HP! {ally.name} HP: {ally.CurrentHealth}/{ally.MaxHealth}");
+        GameManager.Instance.feedText.text = "Healer healed an ally!";
     }
 
     private void MoveTowardAlly(Unit ally)
@@ -182,6 +184,7 @@ public class HealerNPC : Unit
 
         float finalDist = Vector2.Distance(GridPos, ally.GridPos);
         Debug.Log($"{name}: Final distance to {ally.name}: {finalDist:F1} tiles");
+        GameManager.Instance.feedText.text = "Healer moved!";
     }
 
     private void StickToAlliesWhileStayingSafe(PlayerUnit player)
@@ -427,5 +430,6 @@ public class HealerNPC : Unit
     {
         base.OnDeath();
         Debug.Log($"{name} (Healer) has been defeated! Allies lost their support!");
+        GameManager.Instance.feedText.text = "Healer was defeated!";
     }
 }

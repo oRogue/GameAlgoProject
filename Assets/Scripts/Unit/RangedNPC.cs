@@ -58,6 +58,7 @@ public class RangedNPC : Unit
 
         target.TakeDamage(AttackDamage);
         Debug.Log($"{name}: Ranged attack hit {target.name} for {AttackDamage} damage! HP: {target.CurrentHealth}/{target.MaxHealth}");
+        GameManager.Instance.feedText.text = "Ranged attacked!";
         return true;
     }
 
@@ -90,6 +91,7 @@ public class RangedNPC : Unit
 
                 float newDist = Vector2.Distance(GridPos, player.GridPos);
                 Debug.Log($"{name}: Retreated to {OccupiedTile.GridPosition} (now {newDist:F1} tiles away)");
+                GameManager.Instance.feedText.text = "Ranged moved.";
                 return true;
             }
         }
@@ -122,6 +124,7 @@ public class RangedNPC : Unit
 
             MoveToTile(nextTile);
             Debug.Log($"{name}: Advanced to {nextTile.GridPosition} (step {i + 1}/{stepsToTake})");
+            GameManager.Instance.feedText.text = "Ranged moved.";
         }
 
         float finalDist = Vector2.Distance(GridPos, player.GridPos);
@@ -198,5 +201,6 @@ public class RangedNPC : Unit
     {
         base.OnDeath();
         Debug.Log($"{name} has been defeated!");
+        GameManager.Instance.feedText.text = "Ranged was defeated!";
     }
 }

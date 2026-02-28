@@ -108,7 +108,6 @@ MonoBehaviour:
   _attackDamage: 10
   _moveRange: 2
   _healthbarName: RangedNPCHealthBar
-  _flashColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  _flashDuration: 0.3
-  _flashCount: 24
+  _healthScoreName: RangedHealthScore
+  healthScore: {fileID: 0}
   _attackRange: 4

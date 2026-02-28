@@ -108,6 +108,5 @@ MonoBehaviour:
   _attackDamage: 10
   _moveRange: 3
   _healthbarName: ChaserNPCHealthBar
-  _flashColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  _flashDuration: 0.3
-  _flashCount: 24
+  _healthScoreName: ChaserHealthScore
+  healthScore: {fileID: 0}

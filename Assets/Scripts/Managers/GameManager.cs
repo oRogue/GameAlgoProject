@@ -1,4 +1,8 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
@@ -15,6 +19,13 @@ public class GameManager : MonoBehaviour
     [SerializeField][Range(0, 8)] private int _rangedCount = 1;
     [SerializeField][Range(0, 8)] private int _healerCount = 1;
 
+    [Header("Turn Indicator")]
+    [SerializeField] private GameObject _turnIndicatorObj;
+    private CanvasGroup _turnIndicatorCanvasGroup;
+
+    [Header("Feed")]
+    [SerializeField] public TextMeshProUGUI feedText;
+
     public PlayerUnit Player { get; private set; }
 
     void Awake()
@@ -23,6 +34,11 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         else
             Instance = this;
+
+        if (_turnIndicatorObj != null)
+        {
+            _turnIndicatorCanvasGroup = _turnIndicatorObj.GetComponent<CanvasGroup>();
+        }
     }
 
     void Start()
@@ -32,7 +48,9 @@ public class GameManager : MonoBehaviour
         SpawnNPCs(_rangedPrefab, _rangedCount, GetTopLeftTiles(), "Ranged");
         SpawnNPCs(_healerPrefab, _healerCount, GetCenterTiles(), "Healer");
 
+        _turnIndicatorObj.SetActive(false);
 
+        feedText.text = string.Empty;
 
         TurnManager.Instance.StartGame();
     }
@@ -159,5 +177,66 @@ public class GameManager : MonoBehaviour
                 return tile;
         }
         return null;
+    }
+
+    public void ShowTurnIndicator()
+    {
+        if (_turnIndicatorObj == null)
+        {
+            Debug.LogWarning("GameManager: Turn indicator object not assigned!");
+            return;
+        }
+
+        // Show the indicator
+        _turnIndicatorObj.SetActive(true);
+
+        // Start fade out
+        StartCoroutine(FadeInOutTurnIndicator());
+    }
+
+    private IEnumerator FadeInOutTurnIndicator()
+    {
+        float fadeInDuration = 0.2f;   // Fade in duration
+        float displayDuration = 1f;    // Show at full opacity
+        float fadeOutDuration = 1f;    // Fade out duration
+
+        // FADE IN
+        float elapsed = 0f;
+
+        while (elapsed < fadeInDuration)
+        {
+            elapsed += Time.deltaTime;
+
+            if (_turnIndicatorCanvasGroup != null)
+            {
+                _turnIndicatorCanvasGroup.alpha = Mathf.Lerp(0f, 1f, elapsed / fadeInDuration);
+            }
+
+            yield return null;
+        }
+
+        if (_turnIndicatorCanvasGroup != null)
+        {
+            _turnIndicatorCanvasGroup.alpha = 1f;
+        }
+
+        yield return new WaitForSeconds(displayDuration);
+
+        // FADE OUT
+        elapsed = 0f;
+
+        while (elapsed < fadeOutDuration)
+        {
+            elapsed += Time.deltaTime;
+
+            if (_turnIndicatorCanvasGroup != null)
+            {
+                _turnIndicatorCanvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsed / fadeOutDuration);
+            }
+
+            yield return null;
+        }
+
+        _turnIndicatorObj.SetActive(false);
     }
 }

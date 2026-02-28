@@ -1,4 +1,6 @@
 using UnityEngine;
+using TMPro;
+using System.Collections;
 
 /*
 Player-controlled unit.
@@ -29,6 +31,7 @@ public class PlayerUnit : Unit
         _isTurn = true;
         _movesRemaining = MoveRange; 
         Debug.Log($"Player's turn — {_movesRemaining} moves remaining. WASD to move/attack, Space to end turn.");
+        GameManager.Instance.ShowTurnIndicator();
     }
 
     private void HandleMovementInput()
@@ -36,6 +39,7 @@ public class PlayerUnit : Unit
         if (_movesRemaining <= 0)
         {
             Debug.Log("No moves remaining — press Space to end turn.");
+            EndTurn();
             return;
         }
 
@@ -70,6 +74,7 @@ public class PlayerUnit : Unit
             if (TryAttack(target))
             {
                 Debug.Log($"Player attacked {target.name} for {AttackDamage} damage! {target.name} HP: {target.CurrentHealth}/{target.MaxHealth}");
+                GameManager.Instance.feedText.text = "You attacked!";
                 _movesRemaining--;  // Attacking costs a move
             }
             return;
@@ -79,8 +84,9 @@ public class PlayerUnit : Unit
         MoveToTile(targetTile);
         _movesRemaining--;
         Debug.Log($"Player moved to {targetPos}. Moves remaining: {_movesRemaining}");
+        GameManager.Instance.feedText.text = "You moved.";
 
- 
+
         if (_movesRemaining <= 0)
         {
             Debug.Log("No moves remaining — ending turn automatically.");
@@ -93,6 +99,7 @@ public class PlayerUnit : Unit
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("Player ended their turn early.");
+            GameManager.Instance.feedText.text = "You ended your turn.";
             EndTurn();
         }
     }
