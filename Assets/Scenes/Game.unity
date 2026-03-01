@@ -4035,10 +4035,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   _playerPrefab: {fileID: 7205205813878913258, guid: d0622a0073149a441a0877a951d31564, type: 3}
   _chaserPrefab: {fileID: 2010344668473514642, guid: 3f8a7509b764cf44b8f8b8e89ad0a8bb, type: 3}
+  _patrolPrefab: {fileID: 5261225110528226157, guid: f3fb78d12ba9e974183f0df04c0267e2, type: 3}
   _rangedPrefab: {fileID: 2788499173839068667, guid: 49648f18bea58d8419bbd1ce6d89fa28, type: 3}
   _healerPrefab: {fileID: 6686033689281530777, guid: cd20732cad7e6394499c7c209383c383, type: 3}
   _chaserCount: 1
-  _patrolCount: 0
+  _patrolCount: 1
   _rangedCount: 1
   _healerCount: 1
   _turnIndicatorObj: {fileID: 604429966}

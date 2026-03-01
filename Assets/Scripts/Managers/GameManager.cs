@@ -10,12 +10,13 @@ public class GameManager : MonoBehaviour
     [Header("Unit Prefabs")]
     [SerializeField] private PlayerUnit _playerPrefab;
     [SerializeField] private ChaserNPC _chaserPrefab;
+    [SerializeField] private PatrolNPC _patrolPrefab;
     [SerializeField] private RangedNPC _rangedPrefab;
     [SerializeField] private HealerNPC _healerPrefab;
 
     [Header("Spawn Counts")]
     [SerializeField][Range(0, 8)] private int _chaserCount = 1;
-    [SerializeField][Range(0, 8)] private int _patrolCount = 1; // Ready for Patrol NPC
+    [SerializeField][Range(0, 8)] private int _patrolCount = 1;
     [SerializeField][Range(0, 8)] private int _rangedCount = 1;
     [SerializeField][Range(0, 8)] private int _healerCount = 1;
 
@@ -36,24 +37,23 @@ public class GameManager : MonoBehaviour
             Instance = this;
 
         if (_turnIndicatorObj != null)
-        {
             _turnIndicatorCanvasGroup = _turnIndicatorObj.GetComponent<CanvasGroup>();
-        }
     }
 
     void Start()
     {
         SpawnPlayer();
         SpawnNPCs(_chaserPrefab, _chaserCount, GetTopRightTiles(), "Chaser");
+        SpawnPatrols();                                                           // Patrol needs InitPatrol() after InitOnTile()
         SpawnNPCs(_rangedPrefab, _rangedCount, GetTopLeftTiles(), "Ranged");
         SpawnNPCs(_healerPrefab, _healerCount, GetCenterTiles(), "Healer");
 
         _turnIndicatorObj.SetActive(false);
-
         feedText.text = string.Empty;
 
         TurnManager.Instance.StartGame();
     }
+
 
     private void SpawnPlayer()
     {
@@ -73,7 +73,6 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Player spawned at {spawnTile.GridPosition}");
     }
 
-    
     private void SpawnNPCs(Unit prefab, int count, Vector2[] spawnArea, string label)
     {
         if (prefab == null)
@@ -101,6 +100,38 @@ public class GameManager : MonoBehaviour
 
         if (spawned < count)
             Debug.LogWarning($"GameManager: Only spawned {spawned}/{count} {label}s — not enough walkable tiles in spawn area.");
+    }
+
+    private void SpawnPatrols()
+    {
+        if (_patrolPrefab == null)
+        {
+            Debug.LogWarning("GameManager: No prefab assigned for Patrol!");
+            return;
+        }
+
+        Vector2[] spawnArea = GetBottomRightTiles();
+        int spawned = 0;
+
+        foreach (Vector2 pos in spawnArea)
+        {
+            if (spawned >= _patrolCount) break;
+
+            Tile tile = GridManager.Instance.GetTileAtPosition(pos);
+            if (tile == null || !tile.IsWalkable || tile.OccupiedUnit != null) continue;
+
+            PatrolNPC patrol = Instantiate(_patrolPrefab);
+            patrol.name = $"Patrol_{spawned + 1}";
+            patrol.InitOnTile(tile);
+            patrol.InitPatrol();                        
+            TurnManager.Instance.RegisterUnit(patrol);
+
+            Debug.Log($"{patrol.name} spawned at {tile.GridPosition}");
+            spawned++;
+        }
+
+        if (spawned < _patrolCount)
+            Debug.LogWarning($"GameManager: Only spawned {spawned}/{_patrolCount} Patrols — not enough walkable tiles in spawn area.");
     }
 
 
@@ -187,53 +218,38 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        // Show the indicator
         _turnIndicatorObj.SetActive(true);
-
-        // Start fade out
         StartCoroutine(FadeInOutTurnIndicator());
     }
 
     private IEnumerator FadeInOutTurnIndicator()
     {
-        float fadeInDuration = 0.2f;   // Fade in duration
-        float displayDuration = 1f;    // Show at full opacity
-        float fadeOutDuration = 1f;    // Fade out duration
+        float fadeInDuration = 0.2f;
+        float displayDuration = 1f;
+        float fadeOutDuration = 1f;
 
-        // FADE IN
+       
         float elapsed = 0f;
-
         while (elapsed < fadeInDuration)
         {
             elapsed += Time.deltaTime;
-
             if (_turnIndicatorCanvasGroup != null)
-            {
                 _turnIndicatorCanvasGroup.alpha = Mathf.Lerp(0f, 1f, elapsed / fadeInDuration);
-            }
-
             yield return null;
         }
 
         if (_turnIndicatorCanvasGroup != null)
-        {
             _turnIndicatorCanvasGroup.alpha = 1f;
-        }
 
         yield return new WaitForSeconds(displayDuration);
 
-        // FADE OUT
+        
         elapsed = 0f;
-
         while (elapsed < fadeOutDuration)
         {
             elapsed += Time.deltaTime;
-
             if (_turnIndicatorCanvasGroup != null)
-            {
                 _turnIndicatorCanvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsed / fadeOutDuration);
-            }
-
             yield return null;
         }
 
