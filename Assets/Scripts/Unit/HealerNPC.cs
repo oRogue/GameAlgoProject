@@ -1,6 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Healer NPC
+// - Heals allies in range with 10 HP
+// - Will move towards wounded allies if they are out of range
+// - Will retreat if player is too close but still prioritizes healing over retreating
+// - Will remain idle if all alllies are full health
+// - If healer is the last enemy alive, it will start attacking the player
+
 public class HealerNPC : Unit
 {
     [Header("Healer Settings")]
@@ -11,6 +18,7 @@ public class HealerNPC : Unit
     private bool _hasHealedThisTurn = false;
     private bool _hasMovedThisTurn = false;
 
+    // Main turn logic for the Healer NPC
     public override void TakeTurn()
     {
         PlayerUnit player = GameManager.Instance.Player;
@@ -47,6 +55,7 @@ public class HealerNPC : Unit
         TurnManager.Instance.NextTurn();
     }
 
+    // Helper to check if this is the last enemy alive
     private bool IsLastEnemyAlive()
     {
         Unit[] allUnits = FindObjectsByType<Unit>(FindObjectsSortMode.None);
@@ -61,6 +70,7 @@ public class HealerNPC : Unit
         return aliveEnemies == 0;
     }
 
+    // Logic to move towards wounded allies
     private void TryMoveToHelpAllies()
     {
         Unit closestWoundedAlly = FindClosestWoundedAlly();
@@ -93,6 +103,7 @@ public class HealerNPC : Unit
         }
     }
 
+    // Helper to find the closest wounded ally
     private Unit FindClosestWoundedAlly()
     {
         Unit[] allUnits = FindObjectsByType<Unit>(FindObjectsSortMode.None);
@@ -118,6 +129,7 @@ public class HealerNPC : Unit
         return closest;
     }
 
+    // Logic to heal all allies in range
     private void HealAlliesInRange()
     {
         Unit[] allUnits = FindObjectsByType<Unit>(FindObjectsSortMode.None);
@@ -140,6 +152,7 @@ public class HealerNPC : Unit
         }
     }
 
+    // Logic to retreat from player if they are too close
     private void CheckPlayerDistance(PlayerUnit player)
     {
         float distToPlayer = Vector2.Distance(GridPos, player.GridPos);
@@ -162,6 +175,7 @@ public class HealerNPC : Unit
         }
     }
 
+    // Logic to attack player if last enemy alive
     private void FightPlayer(PlayerUnit player)
     {
         // Try to attack first
@@ -172,7 +186,7 @@ public class HealerNPC : Unit
             return;
         }
 
-        // Move toward player if can't attack
+        // Move toward player if cant attack
         List<Tile> path = Pathfinder.FindPath(OccupiedTile, player.OccupiedTile);
         if (path.Count > 0)
         {

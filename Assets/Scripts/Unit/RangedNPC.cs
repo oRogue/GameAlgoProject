@@ -2,11 +2,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Ranged NPC
+// - Able to move in 2 spaces
+// - Will move towards the player till they are 3 tiles away
+// - Shoots the player if they are exactly 3 tiles away
+// - Will retreat if the player is too close
+
 public class RangedNPC : Unit
 {
     [Header("Ranged Settings")]
     [SerializeField] private int _attackRange = 3;
 
+    // Main turn logic for the Ranged NPC
     public override void TakeTurn()
     {
         PlayerUnit player = GameManager.Instance.Player;
@@ -18,6 +25,7 @@ public class RangedNPC : Unit
             return;
         }
 
+        // Checks if the player is within shooting distance
         float distToPlayer = Vector2.Distance(GridPos, player.GridPos);
 
         if (distToPlayer == _attackRange)
@@ -26,12 +34,14 @@ public class RangedNPC : Unit
             TryRangedAttack(player);
         }
 
+        // Retreats if player is too close
         else if (distToPlayer < _attackRange)
         {
             Debug.Log($"{name}: Player too close ({distToPlayer:F1} tiles), retreating 3 tiles!");
 
             bool retreatSuccessful = RetreatFromPlayer(player);
 
+            // If retreat fails, shoots player as a last resort
             if (!retreatSuccessful)
             {
                 Debug.Log($"{name}: Can't retreat! Shooting anyway!");
@@ -39,6 +49,7 @@ public class RangedNPC : Unit
             }
         }
 
+        // Advances towards player if they are too far
         else
         {
             Debug.Log($"{name}: Player too far ({distToPlayer:F1} tiles), advancing 3 tiles!");
@@ -48,6 +59,7 @@ public class RangedNPC : Unit
         TurnManager.Instance.NextTurn();
     }
 
+    // Logic for attacking player
     private bool TryRangedAttack(Unit target)
     {
         if (target == null || !target.IsAlive) return false;
@@ -63,6 +75,7 @@ public class RangedNPC : Unit
         return true;
     }
 
+    // Logic for moving towards player using pathfinding
     private void AdvanceTowardPlayer(PlayerUnit player)
     {
         List<Tile> path = Pathfinder.FindPath(OccupiedTile, player.OccupiedTile);

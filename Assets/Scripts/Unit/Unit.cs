@@ -202,6 +202,7 @@ public abstract class Unit : MonoBehaviour
         healthScore.gameObject.SetActive(false);
     }
 
+    // Logic for enemy to retreat
     public bool RetreatFromPlayer(PlayerUnit player)
     {
         Vector2 fleeDirection = (GridPos - player.GridPos).normalized;
@@ -266,7 +267,7 @@ public abstract class Unit : MonoBehaviour
         float bestDistFromPlayer = 0f;
         float currentDistFromPlayer = Vector2.Distance(GridPos, GameManager.Instance.Player.GridPos);
 
-        // Check ALL tiles in range
+        // Check all tiles in range
         for (int dx = -maxSteps; dx <= maxSteps; dx++)
         {
             for (int dy = -maxSteps; dy <= maxSteps; dy++)
@@ -289,7 +290,7 @@ public abstract class Unit : MonoBehaviour
 
                 float newDistFromPlayer = Vector2.Distance(targetPos, GameManager.Instance.Player.GridPos);
 
-                // MUST be farther from player to be a retreat
+                // Must be farther from player to be a retreat
                 if (newDistFromPlayer <= currentDistFromPlayer)
                     continue;
 
