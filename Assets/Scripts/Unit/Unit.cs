@@ -15,6 +15,8 @@ public abstract class Unit : MonoBehaviour
     private Slider _healthbar;
     [HideInInspector] public TextMeshProUGUI healthScore;
 
+    AudioManager audioManager;
+
     public int MaxHealth => _maxHealth;
     public int CurrentHealth { get; private set; }
     public int AttackDamage => _attackDamage;
@@ -30,6 +32,8 @@ public abstract class Unit : MonoBehaviour
         FindHealthBar();
 
         healthScore.gameObject.SetActive(false);
+
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     private void FindHealthBar()
@@ -107,6 +111,7 @@ public abstract class Unit : MonoBehaviour
         if (dist > 1.5f) return false;  // Must be adjacent (horizontal/vertical)
 
         target.TakeDamage(_attackDamage);
+        audioManager.PlaySFX(audioManager.attackSound);
         return true;
     }
 
