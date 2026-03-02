@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,9 +26,15 @@ public class GameManager : MonoBehaviour
     private CanvasGroup _turnIndicatorCanvasGroup;
 
     [Header("Feed")]
-    [SerializeField] public TextMeshProUGUI feedText;
+    public TextMeshProUGUI feedText;
+
+    [Header("Game End UI")]
+    public GameObject gameEndCanvas;
+    public TextMeshProUGUI endText;
 
     public PlayerUnit Player { get; private set; }
+
+    AudioManager audioManager;
 
     void Awake()
     {
@@ -38,10 +45,14 @@ public class GameManager : MonoBehaviour
 
         if (_turnIndicatorObj != null)
             _turnIndicatorCanvasGroup = _turnIndicatorObj.GetComponent<CanvasGroup>();
+
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void Start()
     {
+        gameEndCanvas.SetActive(false);
+
         SpawnPlayer();
         SpawnNPCs(_chaserPrefab, _chaserCount, GetTopRightTiles(), "Chaser");
         SpawnPatrols();                                                           // Patrol needs InitPatrol() after InitOnTile()
@@ -57,9 +68,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
-        }
+            RestartGame();
     }
 
 
@@ -98,7 +107,7 @@ public class GameManager : MonoBehaviour
             if (tile == null || !tile.IsWalkable || tile.OccupiedUnit != null) continue;
 
             Unit npc = Instantiate(prefab);
-            npc.name = $"{label}_{spawned + 1}";
+            npc.name = $"{label}";
             npc.InitOnTile(tile);
             TurnManager.Instance.RegisterUnit(npc);
 
@@ -129,7 +138,8 @@ public class GameManager : MonoBehaviour
             if (tile == null || !tile.IsWalkable || tile.OccupiedUnit != null) continue;
 
             PatrolNPC patrol = Instantiate(_patrolPrefab);
-            patrol.name = $"Patrol_{spawned + 1}";
+            //patrol.name = $"Patrol_{spawned + 1}";
+            patrol.name = "Patrol";
             patrol.InitOnTile(tile);
             patrol.InitPatrol();                        
             TurnManager.Instance.RegisterUnit(patrol);
@@ -228,6 +238,7 @@ public class GameManager : MonoBehaviour
 
         _turnIndicatorObj.SetActive(true);
         StartCoroutine(FadeInOutTurnIndicator());
+        audioManager.PlaySFX(audioManager.yourTurnSound);
     }
 
     private IEnumerator FadeInOutTurnIndicator()
@@ -262,5 +273,20 @@ public class GameManager : MonoBehaviour
         }
 
         _turnIndicatorObj.SetActive(false);
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void QuitToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ShowEndScreen()
+    {
+        gameEndCanvas.SetActive(true);
     }
 }

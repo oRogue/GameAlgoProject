@@ -16,6 +16,8 @@ public class TurnManager : MonoBehaviour
 
     public bool GameActive { get; private set; } = false;
 
+    AudioManager audioManager;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -26,6 +28,8 @@ public class TurnManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
 
@@ -133,10 +137,18 @@ public class TurnManager : MonoBehaviour
         GameActive = false;
 
         if (playerWon)
+        {
             Debug.Log("All NPCs defeated — Player wins!");
+            audioManager.PlaySFX(audioManager.winSound);
+            GameManager.Instance.endText.text = "You Win!";
+        }
         else
+        {
             Debug.Log("Player has been defeated — Game Over!");
+            audioManager.PlaySFX(audioManager.loseSound);
+            GameManager.Instance.endText.text = "You Lost!";
+        }
 
-        // TODO: Hook into a UI manager to show win/lose screen
+        GameManager.Instance.ShowEndScreen();
     }
 }

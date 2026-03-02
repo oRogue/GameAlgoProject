@@ -111,6 +111,7 @@ MonoBehaviour:
   _healthbarName: ChaserNPCHealthBar
   _healthScoreName: ChaserHealthScore
   healthScore: {fileID: 0}
+  audioManager: {fileID: 0}
 --- !u!1 &4344970162287899705
 GameObject:
   m_ObjectHideFlags: 0

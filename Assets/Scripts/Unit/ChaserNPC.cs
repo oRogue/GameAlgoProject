@@ -66,8 +66,8 @@ public class ChaserNPC : Unit
 
     protected override void OnDeath()
     {
-        base.OnDeath();
         Debug.Log($"{name} has been defeated!");
         GameManager.Instance.feedText.text = "Chaser was defeated!";
+        base.OnDeath();
     }
 }

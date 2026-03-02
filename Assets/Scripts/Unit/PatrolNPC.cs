@@ -212,7 +212,8 @@ public class PatrolNPC : Unit
 
     protected override void OnDeath()
     {
-        base.OnDeath();
         Debug.Log($"{name} has been defeated!");
+        GameManager.Instance.feedText.text = "Patrol was defeated!";
+        base.OnDeath();
     }
 }

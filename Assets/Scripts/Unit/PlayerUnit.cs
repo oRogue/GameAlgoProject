@@ -74,7 +74,6 @@ public class PlayerUnit : Unit
             if (TryAttack(target))
             {
                 Debug.Log($"Player attacked {target.name} for {AttackDamage} damage! {target.name} HP: {target.CurrentHealth}/{target.MaxHealth}");
-                GameManager.Instance.feedText.text = "You attacked!";
                 _movesRemaining--;  // Attacking costs a move
             }
             return;
@@ -84,8 +83,8 @@ public class PlayerUnit : Unit
         MoveToTile(targetTile);
         _movesRemaining--;
         Debug.Log($"Player moved to {targetPos}. Moves remaining: {_movesRemaining}");
-        GameManager.Instance.feedText.text = "You moved.";
 
+        audioManager.PlaySFX(audioManager.moveSound);
 
         if (_movesRemaining <= 0)
         {
@@ -99,7 +98,7 @@ public class PlayerUnit : Unit
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("Player ended their turn early.");
-            GameManager.Instance.feedText.text = "You ended your turn.";
+            GameManager.Instance.feedText.text = "Player ended their turn.";
             EndTurn();
         }
     }

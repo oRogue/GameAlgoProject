@@ -8,8 +8,21 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource SFXSource;
 
     [Header("Audio Clip")]
-    public AudioClip backgroundGame;
+    public AudioClip mainMenuMusic;
+    public AudioClip gameMusic;
+
     public AudioClip attackSound;
+    public AudioClip moveSound;
+    public AudioClip damageSound;
+    public AudioClip shootSound;
+    public AudioClip healSound;
+    public AudioClip yourTurnSound;
+    public AudioClip enemyMoveSound;
+    public AudioClip enemyNotMoveSound;
+    public AudioClip winSound;
+    public AudioClip loseSound;
+
+
 
     public static AudioManager Instance { get; private set; }
     void Awake()
@@ -22,7 +35,14 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        musicSource.clip = backgroundGame;
+        // check current scene
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+            musicSource.clip = mainMenuMusic;
+
+        if (SceneManager.GetActiveScene().name == "Game")
+            musicSource.clip = gameMusic;
+
+        musicSource.volume = 0.1f;
         musicSource.loop = true;
         musicSource.Play();
     }

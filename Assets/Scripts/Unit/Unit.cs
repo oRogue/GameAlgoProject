@@ -16,7 +16,7 @@ public abstract class Unit : MonoBehaviour
     private Slider _healthbar;
     [HideInInspector] public TextMeshProUGUI healthScore;
 
-    AudioManager audioManager;
+    public AudioManager audioManager;
 
     public int MaxHealth => _maxHealth;
     public int CurrentHealth { get; private set; }
@@ -88,6 +88,13 @@ public abstract class Unit : MonoBehaviour
         OccupiedTile = newTile;
         newTile.OccupiedUnit = this;
         transform.position = new Vector3(newTile.GridPosition.x, newTile.GridPosition.y, -1f);
+
+        if (!(this is PlayerUnit))
+        {
+            audioManager.PlaySFX(audioManager.enemyMoveSound);
+        }
+
+        GameManager.Instance.feedText.text = $"{name} moved.";
     }
 
     public void TakeDamage(int damage)
@@ -99,6 +106,8 @@ public abstract class Unit : MonoBehaviour
 
         OnDamageTaken(damage);
         DisplayHealthScoreText(-damage, Color.red); // Red for damage
+
+        audioManager.PlaySFX(audioManager.damageSound);
 
         if (!IsAlive)
             OnDeath();
@@ -113,12 +122,15 @@ public abstract class Unit : MonoBehaviour
 
         target.TakeDamage(_attackDamage);
         audioManager.PlaySFX(audioManager.attackSound);
+        GameManager.Instance.feedText.text = $"{name} attacked!";
         return true;
     }
 
     protected virtual void OnDamageTaken(int damage) { }
     protected virtual void OnDeath()
     {
+        healthScore.gameObject.SetActive(false);
+
         // Vacate tile and disable
         if (OccupiedTile != null)
             OccupiedTile.OccupiedUnit = null;
@@ -137,6 +149,8 @@ public abstract class Unit : MonoBehaviour
         DisplayHealthScoreText(amount, Color.green);
 
         Debug.Log($"{name} was healed for {amount}. HP: {CurrentHealth}/{MaxHealth}");
+
+        audioManager.PlaySFX(audioManager.healSound);
     }
 
     public void DisplayHealthScoreText(int value, Color textColor)
@@ -218,12 +232,15 @@ public abstract class Unit : MonoBehaviour
 
                 float newDist = Vector2.Distance(GridPos, player.GridPos);
                 Debug.Log($"{name}: Retreated to {OccupiedTile.GridPosition} (now {newDist:F1} tiles away)");
-                GameManager.Instance.feedText.text = "Ranged moved.";
+                GameManager.Instance.feedText.text = $"{name} retreated!";
+                audioManager.PlaySFX(audioManager.enemyMoveSound);
                 return true;
             }
         }
 
         Debug.Log($"{name}: No valid retreat path found!");
+        audioManager.PlaySFX(audioManager.enemyNotMoveSound);
+        GameManager.Instance.feedText.text = $"{name} stood their ground.";
         return false;
     }
 

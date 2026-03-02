@@ -9,6 +9,7 @@ public class HealerNPC : Unit
     [SerializeField] private int _retreatDistance = 3; // How close player needs to be to trigger retreat
 
     private bool _hasHealedThisTurn = false;
+    private bool _hasMovedThisTurn = false;
 
     public override void TakeTurn()
     {
@@ -21,6 +22,7 @@ public class HealerNPC : Unit
         }
 
         _hasHealedThisTurn = false;
+        _hasMovedThisTurn = false;
 
         // CASE 1: Last enemy alive, attack player
         if (IsLastEnemyAlive())
@@ -85,6 +87,8 @@ public class HealerNPC : Unit
                     }
                     Debug.Log($"{name}: Moved toward wounded {closestWoundedAlly.name}");
                 }
+
+                _hasMovedThisTurn = true;
             }
         }
     }
@@ -118,7 +122,6 @@ public class HealerNPC : Unit
     private void HealAlliesInRange()
     {
         Unit[] allUnits = FindObjectsByType<Unit>(FindObjectsSortMode.None);
-        bool healedAnyone = false;
 
         foreach (Unit unit in allUnits)
         {
@@ -131,14 +134,11 @@ public class HealerNPC : Unit
             {
                 int healValue = Mathf.Min(_healAmount, unit.MaxHealth - unit.CurrentHealth);
                 unit.Heal(healValue);
-                healedAnyone = true;
                 _hasHealedThisTurn = true;
                 Debug.Log($"{name}: Healed {unit.name} for {healValue} HP!");
+                GameManager.Instance.feedText.text = $"{name} healed allies.";
             }
         }
-
-        if (healedAnyone)
-            GameManager.Instance.feedText.text = "Healer healed allies!";
     }
 
     private void CheckPlayerDistance(PlayerUnit player)
@@ -154,6 +154,12 @@ public class HealerNPC : Unit
         {
             // Player is at safe distance, do nothing
             Debug.Log($"{name}: Everyone is healthy and player is at safe distance ({distToPlayer:F1} tiles). Standing by.");
+
+            if (!_hasMovedThisTurn)
+            {
+                audioManager.PlaySFX(audioManager.enemyNotMoveSound);
+                GameManager.Instance.feedText.text = $"{name} stood their ground.";
+            }
         }
     }
 
@@ -194,8 +200,9 @@ public class HealerNPC : Unit
 
     protected override void OnDeath()
     {
-        base.OnDeath();
         Debug.Log($"{name} (Healer) has been defeated!");
         GameManager.Instance.feedText.text = "Healer was defeated!";
+
+        base.OnDeath();
     }
 }
