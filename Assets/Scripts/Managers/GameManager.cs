@@ -54,6 +54,14 @@ public class GameManager : MonoBehaviour
         TurnManager.Instance.StartGame();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
 
     private void SpawnPlayer()
     {

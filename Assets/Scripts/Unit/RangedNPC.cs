@@ -62,44 +62,6 @@ public class RangedNPC : Unit
         return true;
     }
 
-    private bool RetreatFromPlayer(PlayerUnit player)
-    {
-        Vector2 fleeDirection = (GridPos - player.GridPos).normalized;
-
-        Tile bestRetreatTile = FindFarthestRetreatTile(fleeDirection, MoveRange);
-
-        if (bestRetreatTile != null && bestRetreatTile != OccupiedTile)
-        {
-            List<Tile> path = Pathfinder.FindPath(OccupiedTile, bestRetreatTile);
-
-            if (path.Count > 0)
-            {
-                int stepsToTake = Mathf.Min(MoveRange, path.Count);
-
-                for (int i = 0; i < stepsToTake; i++)
-                {
-                    Tile nextTile = path[i];
-
-                    if (nextTile.OccupiedUnit != null)
-                    {
-                        Debug.Log($"{name}: Retreat path blocked at step {i + 1}, stopping.");
-                        break;
-                    }
-
-                    MoveToTile(nextTile);
-                }
-
-                float newDist = Vector2.Distance(GridPos, player.GridPos);
-                Debug.Log($"{name}: Retreated to {OccupiedTile.GridPosition} (now {newDist:F1} tiles away)");
-                GameManager.Instance.feedText.text = "Ranged moved.";
-                return true;
-            }
-        }
-
-        Debug.Log($"{name}: No valid retreat path found!");
-        return false;
-    }
-
     private void AdvanceTowardPlayer(PlayerUnit player)
     {
         List<Tile> path = Pathfinder.FindPath(OccupiedTile, player.OccupiedTile);
@@ -131,67 +93,7 @@ public class RangedNPC : Unit
         Debug.Log($"{name}: Finished advancing. Now {finalDist:F1} tiles from player.");
     }
 
-    private Tile FindFarthestRetreatTile(Vector2 direction, int maxSteps)
-    {
-        Tile bestRetreatTile = null;
-        float bestDistFromPlayer = 0f;
-
-        // Try straight back first (best option)
-        for (int dist = maxSteps; dist >= 1; dist--)
-        {
-            Vector2 targetPos = GridPos + direction * dist;
-            Tile tile = GridManager.Instance.GetTileAtPosition(targetPos);
-
-            if (tile != null && tile.IsWalkable && tile.OccupiedUnit == null)
-            {
-                // Check if we can actually path to it
-                List<Tile> testPath = Pathfinder.FindPath(OccupiedTile, tile);
-                if (testPath.Count > 0)
-                {
-                    return tile; // Found a clear path straight back
-                }
-            }
-        }
-
-        // Straight back is blocked, try diagonal/perpendicular retreat
-        Vector2[] alternateDirections = new Vector2[]
-        {
-            (direction + new Vector2(-direction.y, direction.x)).normalized,  // diagonal-right back
-            (direction + new Vector2(direction.y, -direction.x)).normalized,  // diagonal-left back
-            new Vector2(-direction.y, direction.x),   // perpendicular right
-            new Vector2(direction.y, -direction.x)    // perpendicular left
-        };
-
-        foreach (Vector2 altDir in alternateDirections)
-        {
-            for (int dist = maxSteps; dist >= 1; dist--)
-            {
-                Vector2 targetPos = GridPos + altDir * dist;
-                Tile tile = GridManager.Instance.GetTileAtPosition(targetPos);
-
-                if (tile != null && tile.IsWalkable && tile.OccupiedUnit == null)
-                {
-                    // Check if we can actually path to it
-                    List<Tile> testPath = Pathfinder.FindPath(OccupiedTile, tile);
-
-                    if (testPath.Count > 0)
-                    {
-                        float distFromPlayer = Vector2.Distance(tile.GridPosition, GameManager.Instance.Player.GridPos);
-
-                        // Pick the tile that puts us farthest from the player
-                        if (distFromPlayer > bestDistFromPlayer)
-                        {
-                            bestDistFromPlayer = distFromPlayer;
-                            bestRetreatTile = tile;
-                        }
-                    }
-                }
-            }
-        }
-
-        return bestRetreatTile;
-    }
-
+    
     protected override void OnDamageTaken(int damage)
     {
         Debug.Log($"{name} took {damage} damage. HP: {CurrentHealth}/{MaxHealth}");
