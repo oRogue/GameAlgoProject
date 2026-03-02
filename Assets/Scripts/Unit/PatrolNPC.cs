@@ -9,11 +9,11 @@ public class PatrolNPC : Unit
     private List<Tile> _patrolRoute = new List<Tile>();
     private int _patrolIndex = 0;  
 
-    /// State machine
+    
     private enum State { Patrol, Chase }
     private State _state = State.Patrol;
 
-    /// The tile this NPC spawned on — used as the centre of the patrol circle
+    
     private Vector2 _spawnCenter;
 
     protected override void Awake()
