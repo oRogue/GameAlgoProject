@@ -175,7 +175,6 @@ public abstract class Unit : MonoBehaviour
         float duration = 1f;
         float elapsed = 0f;
 
-        // Set the initial color (with full alpha)
         healthScore.color = new Color(
             textColor.r,
             textColor.g,
@@ -216,28 +215,45 @@ public abstract class Unit : MonoBehaviour
             if (path.Count > 0)
             {
                 int stepsToTake = Mathf.Min(MoveRange, path.Count);
+                int stepsMoved = 0;
 
                 for (int i = 0; i < stepsToTake; i++)
                 {
                     Tile nextTile = path[i];
 
+                    // Check if tile is blocked
                     if (nextTile.OccupiedUnit != null)
                     {
                         Debug.Log($"{name}: Retreat path blocked at step {i + 1}, stopping.");
+
+                        if (stepsMoved == 0)
+                        {
+                            Debug.Log($"{name}: No retreat path found - completely blocked!");
+                            audioManager.PlaySFX(audioManager.enemyNotMoveSound);
+                            GameManager.Instance.feedText.text = $"{name} can't retreat!";
+                            return false;
+                        }
+
+                        // Partial retreat is successful
                         break;
                     }
 
                     MoveToTile(nextTile);
+                    stepsMoved++;
                 }
 
-                float newDist = Vector2.Distance(GridPos, player.GridPos);
-                Debug.Log($"{name}: Retreated to {OccupiedTile.GridPosition} (now {newDist:F1} tiles away)");
-                GameManager.Instance.feedText.text = $"{name} retreated!";
-                audioManager.PlaySFX(audioManager.enemyMoveSound);
-                return true;
+                if (stepsMoved > 0)
+                {
+                    float newDist = Vector2.Distance(GridPos, player.GridPos);
+                    Debug.Log($"{name}: Retreated {stepsMoved} tile(s) to {OccupiedTile.GridPosition} (now {newDist:F1} tiles away)");
+                    GameManager.Instance.feedText.text = $"{name} retreated!";
+                    audioManager.PlaySFX(audioManager.enemyMoveSound);
+                    return true;
+                }
             }
         }
 
+        // No retreat happened at all
         Debug.Log($"{name}: No valid retreat path found!");
         audioManager.PlaySFX(audioManager.enemyNotMoveSound);
         GameManager.Instance.feedText.text = $"{name} stood their ground.";
@@ -248,55 +264,44 @@ public abstract class Unit : MonoBehaviour
     {
         Tile bestRetreatTile = null;
         float bestDistFromPlayer = 0f;
+        float currentDistFromPlayer = Vector2.Distance(GridPos, GameManager.Instance.Player.GridPos);
 
-        // Try straight back first (best option)
-        for (int dist = maxSteps; dist >= 1; dist--)
+        // Check ALL tiles in range
+        for (int dx = -maxSteps; dx <= maxSteps; dx++)
         {
-            Vector2 targetPos = GridPos + direction * dist;
-            Tile tile = GridManager.Instance.GetTileAtPosition(targetPos);
-
-            if (tile != null && tile.IsWalkable && tile.OccupiedUnit == null)
+            for (int dy = -maxSteps; dy <= maxSteps; dy++)
             {
-                // Check if we can actually path to it
-                List<Tile> testPath = Pathfinder.FindPath(OccupiedTile, tile);
-                if (testPath.Count > 0)
-                {
-                    return tile; // Found a clear path straight back
-                }
-            }
-        }
-        // Straight back is blocked, try diagonal/perpendicular retreat
-        Vector2[] alternateDirections = new Vector2[]
-        {
-            (direction + new Vector2(-direction.y, direction.x)).normalized,  // diagonal-right back
-            (direction + new Vector2(direction.y, -direction.x)).normalized,  // diagonal-left back
-            new Vector2(-direction.y, direction.x),   // perpendicular right
-            new Vector2(direction.y, -direction.x)    // perpendicular left
-        };
+                if (Mathf.Abs(dx) + Mathf.Abs(dy) > maxSteps)
+                    continue;
 
-        foreach (Vector2 altDir in alternateDirections)
-        {
-            for (int dist = maxSteps; dist >= 1; dist--)
-            {
-                Vector2 targetPos = GridPos + altDir * dist;
+                // Skip current position
+                if (dx == 0 && dy == 0)
+                    continue;
+
+                Vector2 targetPos = new Vector2(GridPos.x + dx, GridPos.y + dy);
                 Tile tile = GridManager.Instance.GetTileAtPosition(targetPos);
 
-                if (tile != null && tile.IsWalkable && tile.OccupiedUnit == null)
+                if (tile == null || !tile.IsWalkable)
+                    continue;
+
+                if (tile.OccupiedUnit != null)
+                    continue;
+
+                float newDistFromPlayer = Vector2.Distance(targetPos, GameManager.Instance.Player.GridPos);
+
+                // MUST be farther from player to be a retreat
+                if (newDistFromPlayer <= currentDistFromPlayer)
+                    continue;
+
+                // Check if can actually path to this tile
+                List<Tile> testPath = Pathfinder.FindPath(OccupiedTile, tile);
+                if (testPath.Count == 0)
+                    continue;
+
+                if (newDistFromPlayer > bestDistFromPlayer)
                 {
-                    // Check if we can actually path to it
-                    List<Tile> testPath = Pathfinder.FindPath(OccupiedTile, tile);
-
-                    if (testPath.Count > 0)
-                    {
-                        float distFromPlayer = Vector2.Distance(tile.GridPosition, GameManager.Instance.Player.GridPos);
-
-                        // Pick the tile that puts us farthest from the player
-                        if (distFromPlayer > bestDistFromPlayer)
-                        {
-                            bestDistFromPlayer = distFromPlayer;
-                            bestRetreatTile = tile;
-                        }
-                    }
+                    bestDistFromPlayer = newDistFromPlayer;
+                    bestRetreatTile = tile;
                 }
             }
         }

@@ -24,7 +24,7 @@ public class HealerNPC : Unit
         _hasHealedThisTurn = false;
         _hasMovedThisTurn = false;
 
-        // CASE 1: Last enemy alive, attack player
+        // Attack if last enemy alive
         if (IsLastEnemyAlive())
         {
             FightPlayer(player);
@@ -32,13 +32,13 @@ public class HealerNPC : Unit
             return;
         }
 
-        // CASE 2: Try to move first (to get in range of wounded allies)
+        // Get in range to heal allies
         TryMoveToHelpAllies();
 
-        // CASE 3: After moving, heal anyone in range
+        // Heal allies
         HealAlliesInRange();
 
-        // CASE 4: If no one needed healing, check if player is too close
+        // Check player distance if it hasnt healed
         if (!_hasHealedThisTurn)
         {
             CheckPlayerDistance(player);
@@ -104,7 +104,6 @@ public class HealerNPC : Unit
             if (unit == this || !unit.IsAlive || unit is PlayerUnit)
                 continue;
 
-            // Only consider allies below max health
             if (unit.CurrentHealth < unit.MaxHealth)
             {
                 float dist = Vector2.Distance(GridPos, unit.GridPos);
@@ -145,7 +144,7 @@ public class HealerNPC : Unit
     {
         float distToPlayer = Vector2.Distance(GridPos, player.GridPos);
 
-        // If player is too close, retreat exactly 3 tiles behind
+        // If player is too close, retreat
         if (distToPlayer <= _retreatDistance)
         {
             RetreatFromPlayer(player);

@@ -91,6 +91,8 @@ public class PlayerUnit : Unit
             Debug.Log("No moves remaining — ending turn automatically.");
             EndTurn();
         }
+
+        TurnManager.Instance.CheckGameOver();
     }
 
     private void HandleEndTurnInput()

@@ -81,7 +81,7 @@ public class TurnManager : MonoBehaviour
             _currentTurnIndex = (_currentTurnIndex + 1) % _turnOrder.Count;
             attempts++;
 
-            // Safety: if we've looped through everyone and no one is alive, stop
+            // Stop if every unit is dead
             if (attempts > _turnOrder.Count)
             {
                 Debug.LogError("TurnManager: No alive units found!");
@@ -109,7 +109,7 @@ public class TurnManager : MonoBehaviour
         current.TakeTurn();
     }
 
-    private bool CheckGameOver()
+    public bool CheckGameOver()
     {
         // Find player unit
         Unit player = _turnOrder.Find(u => u is PlayerUnit);

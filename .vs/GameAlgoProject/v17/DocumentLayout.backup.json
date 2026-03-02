@@ -3,40 +3,44 @@
   "WorkspaceRootPath": "D:\\Unity\\GameAlgoProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|D:\\Unity\\GameAlgoProject\\assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|d:\\unity\\gamealgoproject\\assets\\scripts\\managers\\turnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\turnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|d:\\unity\\gamealgoproject\\assets\\scripts\\unit\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unit\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|d:\\unity\\gamealgoproject\\assets\\scripts\\managers\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|D:\\Unity\\GameAlgoProject\\assets\\scripts\\managers\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|D:\\Unity\\GameAlgoProject\\assets\\scripts\\unit\\healernpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unit\\healernpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|D:\\Unity\\GameAlgoProject\\assets\\scripts\\managers\\turnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\turnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|D:\\Unity\\GameAlgoProject\\assets\\scripts\\unit\\rangednpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unit\\rangednpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|d:\\unity\\gamealgoproject\\assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|D:\\Unity\\GameAlgoProject\\assets\\scripts\\unit\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unit\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|D:\\Unity\\GameAlgoProject\\assets\\scripts\\unit\\patrolnpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unit\\patrolnpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|D:\\Unity\\GameAlgoProject\\assets\\scripts\\unit\\playerunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unit\\playerunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|D:\\Unity\\GameAlgoProject\\assets\\scripts\\unit\\chasernpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unit\\chasernpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|D:\\Unity\\GameAlgoProject\\assets\\scripts\\unit\\healernpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unit\\healernpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|D:\\Unity\\GameAlgoProject\\assets\\scripts\\unit\\patrolnpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unit\\patrolnpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|d:\\unity\\gamealgoproject\\assets\\scripts\\managers\\mainmenumanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\mainmenumanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|D:\\Unity\\GameAlgoProject\\assets\\scripts\\unit\\rangednpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unit\\rangednpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|D:\\Unity\\GameAlgoProject\\assets\\scripts\\unit\\chasernpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{137BE504-A771-FDD3-5835-B02E8AF203E4}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unit\\chasernpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,8 +50,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainMenuManager.cs",
+              "DocumentMoniker": "D:\\Unity\\GameAlgoProject\\Assets\\Scripts\\Managers\\MainMenuManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\MainMenuManager.cs",
+              "ToolTip": "D:\\Unity\\GameAlgoProject\\Assets\\Scripts\\Managers\\MainMenuManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Managers\\MainMenuManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T10:42:20.117Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -56,27 +73,27 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\TurnManager.cs",
               "ToolTip": "D:\\Unity\\GameAlgoProject\\Assets\\Scripts\\Managers\\TurnManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\Managers\\TurnManager.cs",
-              "ViewState": "AgIAAHgAAAAAAAAAAAAAAJIAAAA/AAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAIwAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T10:29:13.246Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "AudioManager.cs",
               "DocumentMoniker": "D:\\Unity\\GameAlgoProject\\Assets\\Scripts\\Managers\\AudioManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\AudioManager.cs",
               "ToolTip": "D:\\Unity\\GameAlgoProject\\Assets\\Scripts\\Managers\\AudioManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\Managers\\AudioManager.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAABIAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAABoAAAAAAAAAAAAAwCoAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T09:08:14.819Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "ChaserNPC.cs",
               "DocumentMoniker": "D:\\Unity\\GameAlgoProject\\Assets\\Scripts\\Unit\\ChaserNPC.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Unit\\ChaserNPC.cs",
@@ -84,25 +101,24 @@
               "RelativeToolTip": "Assets\\Scripts\\Unit\\ChaserNPC.cs",
               "ViewState": "AgIAAEAAAAAAAAAAAAAAAEgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T07:27:27.434Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-02T07:27:27.434Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "PlayerUnit.cs",
               "DocumentMoniker": "D:\\Unity\\GameAlgoProject\\Assets\\Scripts\\Unit\\PlayerUnit.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Unit\\PlayerUnit.cs",
               "ToolTip": "D:\\Unity\\GameAlgoProject\\Assets\\Scripts\\Unit\\PlayerUnit.cs",
               "RelativeToolTip": "Assets\\Scripts\\Unit\\PlayerUnit.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAuwDcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAEQAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T06:47:52.868Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "RangedNPC.cs",
               "DocumentMoniker": "D:\\Unity\\GameAlgoProject\\Assets\\Scripts\\Unit\\RangedNPC.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Unit\\RangedNPC.cs",
@@ -110,57 +126,56 @@
               "RelativeToolTip": "Assets\\Scripts\\Unit\\RangedNPC.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAqwD4AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T06:29:08.4Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-02T06:29:08.4Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "HealerNPC.cs",
               "DocumentMoniker": "D:\\Unity\\GameAlgoProject\\Assets\\Scripts\\Unit\\HealerNPC.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Unit\\HealerNPC.cs",
               "ToolTip": "D:\\Unity\\GameAlgoProject\\Assets\\Scripts\\Unit\\HealerNPC.cs",
               "RelativeToolTip": "Assets\\Scripts\\Unit\\HealerNPC.cs",
-              "ViewState": "AgIAAIYAAAAAAAAAAAAQwJ8AAABFAAAAAAAAAA==",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAAAJ8AAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T05:56:15.52Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Unit.cs",
               "DocumentMoniker": "D:\\Unity\\GameAlgoProject\\Assets\\Scripts\\Unit\\Unit.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Unit\\Unit.cs",
               "ToolTip": "D:\\Unity\\GameAlgoProject\\Assets\\Scripts\\Unit\\Unit.cs",
               "RelativeToolTip": "Assets\\Scripts\\Unit\\Unit.cs",
-              "ViewState": "AgIAAH0AAAAAAAAAAAAAAIUAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAANQAAAAAAAAAAAAAAPIAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-01T17:12:28.06Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 4,
               "Title": "PatrolNPC.cs",
               "DocumentMoniker": "D:\\Unity\\GameAlgoProject\\Assets\\Scripts\\Unit\\PatrolNPC.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Unit\\PatrolNPC.cs",
               "ToolTip": "D:\\Unity\\GameAlgoProject\\Assets\\Scripts\\Unit\\PatrolNPC.cs",
               "RelativeToolTip": "Assets\\Scripts\\Unit\\PatrolNPC.cs",
-              "ViewState": "AgIAAMsAAAAAAAAAAAAAANcAAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAFcAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-01T17:05:46.494Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "GameManager.cs",
               "DocumentMoniker": "D:\\Unity\\GameAlgoProject\\Assets\\Scripts\\Managers\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\GameManager.cs",
               "ToolTip": "D:\\Unity\\GameAlgoProject\\Assets\\Scripts\\Managers\\GameManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\Managers\\GameManager.cs",
-              "ViewState": "AgIAAAMBAAAAAAAAAAAAABYBAAArAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAAAAB8BAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-19T10:12:11.152Z",
               "EditorCaption": ""
